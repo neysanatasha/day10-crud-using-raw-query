@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Detail Project</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet" />
+	<link rel="shortcut icon" href="/public/img/iconlogo.jpg" type="image/x-icon" />
+	<!-- Bootstrap Stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/public/css/style.css" />
+</head>
+
+<body>
+	<header id="header">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg bg-light border-bottom sticky-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"><img src="/public/img/logo.png" alt="Logo" width="50" /></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="/home">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/create">Add Project</a>
+						</li>
+					</ul>
+					<a href="/contact" class="btn btn-dark ms-auto">Contact Me</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Content -->
+	<main id="main">
+		<div class="container">
+			<div class="py-5">
+				<h1 class="text-center mb-4">{{ .Project.ProjectName }}</h1>
+				<div class="row mb-4">
+					<div class="col-md-8 mb-3 mb-md-0">
+						<div class="thumbnail-wrap" style="height: 300px;">
+							<img src="/{{ .Project.Image }}" alt="Image" class="img-thumbnail p-0 border-0 rounded-3" />
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="bg-light rounded-3 p-3">
+							<div class="mb-3">
+								<h5 class="mb-2">Duration</h5>
+								<span class="d-flex align-items-center">
+									<span class="icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="18px"
+											height="18px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+											<path fill="currentColor"
+												d="M8 14q-.425 0-.713-.288Q7 13.425 7 13t.287-.713Q7.575 12 8 12t.713.287Q9 12.575 9 13t-.287.712Q8.425 14 8 14Zm4 0q-.425 0-.712-.288Q11 13.425 11 13t.288-.713Q11.575 12 12 12t.713.287Q13 12.575 13 13t-.287.712Q12.425 14 12 14Zm4 0q-.425 0-.712-.288Q15 13.425 15 13t.288-.713Q15.575 12 16 12t.712.287Q17 12.575 17 13t-.288.712Q16.425 14 16 14ZM5 22q-.825 0-1.413-.587Q3 20.825 3 20V6q0-.825.587-1.412Q4.175 4 5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588Q21 5.175 21 6v14q0 .825-.587 1.413Q19.825 22 19 22Zm0-2h14V10H5v10Z" />
+										</svg></span>{{ .Project.StartDate.Format "01 Jan 2006" }} s/d. {{
+									.Project.EndDate.Format "01 Jan 2006" }}
+								</span>
+								<span class="d-flex align-items-center">
+									<span class="icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="18px"
+											height="18px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+											<path fill="currentColor"
+												d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8zm.5-13H11v6l5.25 3.15l.75-1.23l-4.5-2.67z" />
+										</svg></span>{{ .Project.Duration }}
+								</span>
+							</div>
+							<h5 class="mb-2">Technologies</h5>
+							<div class="d-flex align-items-center flex-wrap">
+								{{ range $index, $data := .Project.Technologies
+								}}
+								<div class="col-6">
+									<img width="18" class="icon me-2" src="/public/img/{{ $data }}.svg" alt="Icon" />{{
+									if (eq
+									$data "nodejs" ) }} Node JS
+									{{ else if (eq
+									$data "reactjs" ) }} React JS
+									{{ else if (eq
+									$data "nextjs" ) }} Next JS
+									{{ else if (eq
+									$data "vuejs" ) }} Vue JS {{ end }}
+								</div>
+								{{ end }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-justify fs-sm">
+					{{ .Project.Description }}
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="/public/js/app.js"></script>
+</body>
+
+</html>

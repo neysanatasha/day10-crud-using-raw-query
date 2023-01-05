@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Add Project</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet" />
+	<link rel="shortcut icon" href="/public/img/iconlogo.jpg" type="image/x-icon" />
+	<!-- Bootstrap Stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/public/css/style.css" />
+</head>
+
+<body>
+	<header id="header">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg bg-light border-bottom sticky-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"><img src="/public/img/logo.png" alt="Logo" width="50" /></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="/home">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="/create">Add Project</a>
+						</li>
+					</ul>
+					<a href="/contact" class="btn btn-dark ms-auto">Contact Me</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Content -->
+	<main id="main">
+		<!-- Hero -->
+		<div class="d-flex justify-content-center py-5">
+			<div class="p-3 w-100" style="max-width: 800px">
+				<h2 class="text-center mb-5">Add Project</h2>
+				<form action="/create" method="POST" enctype="multipart/form-data">
+					<div class="mb-3">
+						<label for="project_name" class="form-label">Project Name</label>
+						<input type="text" class="form-control" id="project_name" name="project_name" />
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<label for="start_date" class="form-label">Start Date</label>
+							<input type="date" class="form-control" id="start_date" name="start_date" />
+						</div>
+						<div class="col-md-6">
+							<label for="end_date" class="form-label">End Date</label>
+							<input type="date" class="form-control" id="end_date" name="end_date" />
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="description" class="form-label">Description</label>
+						<textarea class="form-control" id="description" name="description" rows="5"></textarea>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Technologies</label>
+						<div class="row flex-wrap">
+							<div class="col-6">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="technologies" value="nodejs"
+										id="nodejs" />
+									<label class="form-check-label" for="nodejs">
+										Node JS
+									</label>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="technologies" value="reactjs"
+										id="reactjs" />
+									<label class="form-check-label" for="reactjs">
+										React JS
+									</label>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="technologies" value="vuejs"
+										id="vuejs" />
+									<label class="form-check-label" for="vuejs">
+										Vue JS
+									</label>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="technologies" value="nextjs"
+										id="nextjs" />
+									<label class="form-check-label" for="nextjs">
+										Next JS
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="image" class="form-label">Image</label>
+						<div class="input-group">
+							<input class="form-control" type="file" id="image" name="image" />
+							<span class="input-group-text bg-transparent">
+								<span class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+										preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+										<path fill="currentColor"
+											d="M11.5 22q-2.3 0-3.9-1.6T6 16.5V6q0-1.65 1.175-2.825Q8.35 2 10 2q1.65 0 2.825 1.175Q14 4.35 14 6v9.5q0 1.05-.725 1.775Q12.55 18 11.5 18q-1.05 0-1.775-.725Q9 16.55 9 15.5V6h1.5v9.5q0 .425.288.712q.287.288.712.288t.713-.288q.287-.287.287-.712V6q0-1.05-.725-1.775Q11.05 3.5 10 3.5q-1.05 0-1.775.725Q7.5 4.95 7.5 6v10.5q0 1.65 1.175 2.825Q9.85 20.5 11.5 20.5q1.65 0 2.825-1.175Q15.5 18.15 15.5 16.5V6H17v10.5q0 2.3-1.6 3.9T11.5 22Z" />
+									</svg></span></span>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-dark rounded-pill mt-5 px-4 d-flex ms-auto">
+						Submit
+					</button>
+				</form>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="/public/js/app.js"></script>
+</body>
+
+</html>
